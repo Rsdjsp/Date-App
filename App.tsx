@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Pressable, SafeAreaView, StyleSheet, Text} from 'react-native';
+import Form from './src/components/Form';
 
 export default function App() {
+  const [visibleModal, setVisibleModal] = useState(false);
+
   const pressHandler = () => {
-    console.log('you press the button');
+    setVisibleModal(true);
   };
 
   return (
@@ -14,6 +17,7 @@ export default function App() {
       <Pressable style={styles.btnNewDate} onPress={pressHandler}>
         <Text style={styles.btnText}>New Date</Text>
       </Pressable>
+      <Form modalVisible={visibleModal} setModal={setVisibleModal} />
     </SafeAreaView>
   );
 }
